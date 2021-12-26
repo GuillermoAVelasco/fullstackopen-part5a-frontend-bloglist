@@ -28,9 +28,8 @@ const App = () => {
           'loggedNoteappUser', JSON.stringify(user)
         )
 
-        setUser(user)
         blogService.setToken(user.token)
-        
+        setUser(user)        
         setUsername('')
         setPassword('')
       } catch (exception) {
@@ -173,8 +172,10 @@ const App = () => {
           onChange={handleLikesChange}
         />
         <button type="submit">save</button>
-      </form>  
-      </div>
+      </form>
+      <h2>blogs</h2>     
+      {blogs.map(blog => <Blog key={blog.id} blog={blog} />)}        
+    </div>
   )
 
   return (
@@ -189,8 +190,7 @@ const App = () => {
         :
         blogForm()       
       }      
-      <h2>blogs</h2>     
-      {blogs.map(blog => <Blog key={blog.id} blog={blog} />)}      
+      
   </div>
   )
 }
